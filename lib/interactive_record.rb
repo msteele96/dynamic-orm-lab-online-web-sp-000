@@ -40,5 +40,11 @@ class InteractiveRecord
     values.join(", ")
   end
 
+  def save
+    sql = <<-SQL
+      INSERT INTO #{table_name} (col_names_for_insert) VALUES (?)
+    SQL
+    DB[:conn].execute(sql, values_for_insert )
+  end
 
 end
