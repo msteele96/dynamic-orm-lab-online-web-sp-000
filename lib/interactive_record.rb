@@ -55,7 +55,6 @@ class InteractiveRecord
       SELECT * FROM #{table_name} WHERE name = ?
     SQL
     DB[:conn].execute(sql, name)
-
   end
 
 end
