@@ -57,11 +57,11 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(column: attribute)
+  def self.find_by(attr_hash)
     sql = <<-SQL
-      SELECT * FROM #{table_name} WHERE #{column} = ? LIMIT 1
+      SELECT * FROM #{table_name} WHERE #{attr_hash.keys.first} = ? LIMIT 1
     SQL
-    DB[:conn].execute(sql, attribute)
+    DB[:conn].execute(sql, attr_hash.values.first)
   end
 
 end
