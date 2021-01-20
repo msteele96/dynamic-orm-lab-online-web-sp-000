@@ -8,7 +8,6 @@ class InteractiveRecord
   end
 
   def self.column_names
-
     sql = "pragma table_info('#{table_name}')"
 
     table_info = DB[:conn].execute(sql)
@@ -22,6 +21,12 @@ class InteractiveRecord
   def initialize(options = {})
     options.each do |property, value|
       self.send("#{property}=", value)
+    end
+  end
+
+  def attr_accessor
+    column_names.each do |col|
+      col.to_sym
     end
   end
 
