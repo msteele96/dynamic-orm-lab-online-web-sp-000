@@ -57,9 +57,9 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(keyword: attribute)
+  def self.find_by(column: attribute)
     sql = <<-SQL
-      SELECT * FROM #{table_name} WHERE #{keyword} = ? LIMIT 1
+      SELECT * FROM #{table_name} WHERE #{column} = ? LIMIT 1
     SQL
     DB[:conn].execute(sql, attribute)
   end
