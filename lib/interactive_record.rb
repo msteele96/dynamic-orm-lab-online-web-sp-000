@@ -24,10 +24,5 @@ class InteractiveRecord
     end
   end
 
-  def attr_accessor
-    column_names.each do |col|
-      col.to_sym
-    end
-  end
 
 end
